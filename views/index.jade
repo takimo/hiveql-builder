@@ -1,0 +1,28 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      a.brand(href="/hiveql/")= title
+      .nav-collapse
+        ul.nav
+          li
+            a(href="/hiveql") Create
+
+.container-fluid
+  .row-fluid
+    form(action="/save",method="post")
+      .span6
+        p
+          input.btn.btn-primary(type="submit")
+        input(type="hidden", name="id", value=id)
+        p
+          textarea.input-xxlarge(rows="15",name="template")= hiveql.template
+        p
+          textarea.input-xxlarge(rows="15",name="data")= hiveql.data
+    .span4
+      p
+        - if (id)
+          iframe(src="/build/" + id, style="border:none;height:400px;height:500px;", frameborder="0");
+        - else
+          p
+            pre
+              code ここにHivQLが出力されます
